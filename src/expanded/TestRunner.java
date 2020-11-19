@@ -75,7 +75,6 @@ public class TestRunner {
     }
 
     private void handleFailedTest(Test annotation, Throwable target) {
-
         if (target instanceof AssertionFailedException) // if its thrown deliberately
             registerFailedTest(annotation, ((AssertionFailedException) target).getActual());
         else  // it was a mistake :/
