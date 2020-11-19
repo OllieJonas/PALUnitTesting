@@ -34,7 +34,7 @@ public class Assertions {
         assertDoesntThrow(runnable, Exception.class);
     }
 
-    public static <T extends Throwable> void assertDoesntThrow(Runnable runnable, Class<T> throwable) {
+    public static void assertDoesntThrow(Runnable runnable, Class<? extends Throwable> throwable) {
         try {
             runnable.run();
         } catch (Throwable t) {
@@ -42,7 +42,7 @@ public class Assertions {
                 throw new AssertionFailedException(throwable, "No Exception");
         }
     }
-    public static <T extends Throwable> void assertThrows(Runnable runnable, Class<T> throwable) {
+    public static void assertThrows(Runnable runnable, Class<? extends Throwable> throwable) {
         try {
             runnable.run();
             throw new AssertionFailedException(throwable, null);
