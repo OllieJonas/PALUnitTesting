@@ -38,7 +38,7 @@ public class TestRunner {
     private void runTest(Method method) {
         Test annotation = method.getAnnotation(Test.class);
 
-        logTestRunning(annotation);
+        logTestRunning(annotation, method.getName());
 
         try {
             invoke(method);
@@ -50,9 +50,9 @@ public class TestRunner {
         }
     }
 
-    private void logTestRunning(Test annotation) {
+    private void logTestRunning(Test annotation, String methodName) {
         if (Constants.LOG_INDIVIDUAL_TESTS)
-            System.out.printf(Constants.TEST_RUNNING, annotation.name(), Util.listToStr(annotation.input()), annotation.expected());
+            System.out.printf(Constants.TEST_RUNNING, getName(annotation, methodName), Util.listToStr(annotation.input()), annotation.expected());
     }
 
     private void invoke(Method method) throws IllegalAccessException, InvocationTargetException {
@@ -83,6 +83,10 @@ public class TestRunner {
 
     private void registerFailedTest(Test annotation, String methodName, Object result) {
         breakdown.failTest(new Failure(annotation, methodName, result));
+    }
+
+    private String getName(Test annotation, String methodName) {
+        return annotation.name().equals("") ? methodName : annotation.name();
     }
 
     public TestSuiteBreakdown getBreakdown() {
