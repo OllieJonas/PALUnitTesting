@@ -20,15 +20,17 @@ public class PALUnitTesting {
     }
 
     public void runTests() {
+        UnitTestsBreakdown breakdown = new UnitTestsBreakdown();
         testSuites.forEach(s -> {
-            TestRunner runner = new TestRunner(s);
+            TestSuiteRunner runner = new TestSuiteRunner(s);
 
-            s.initSetup();
+            s.beforeAllTests();
             runner.run();
-            s.initTeardown();
+            s.afterAllTests();
 
-            printBreakdown(runner.getBreakdown());
+            breakdown.addBreakdown(s.getClass().getSimpleName(), runner.getBreakdown());
         });
+        breakdown.print();
     }
 
     private void printBreakdown(TestSuiteBreakdown breakdown) {

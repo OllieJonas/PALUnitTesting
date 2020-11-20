@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class TestRunner {
+public class TestSuiteRunner {
 
     private final TestSuite suite;
 
@@ -14,7 +14,7 @@ public class TestRunner {
 
     private List<Method> targetMethods;
 
-    public TestRunner(TestSuite suite) {
+    public TestSuiteRunner(TestSuite suite) {
         this.suite = suite;
         this.breakdown = new TestSuiteBreakdown(suite);
     }
@@ -31,7 +31,11 @@ public class TestRunner {
     }
 
     private void runTests() {
-        targetMethods.forEach(this::runTest);
+        targetMethods.forEach(method -> {
+            suite.beforeEachTest();
+            runTest(method);
+            suite.afterEachTest();
+        });
     }
 
     /** Assumes we've already filtered the list of declared methods for the annotation {@link Test} */

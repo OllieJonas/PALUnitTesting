@@ -4,14 +4,14 @@ public class Failure {
 
     static final String STARTING = "==> ";
 
-    private final Test testAnno;
+    private final Test test;
 
     private final String methodName;
 
     private final Object result;
 
-    public Failure(Test testAnno, String methodName, Object result) {
-        this.testAnno = testAnno;
+    public Failure(Test test, String methodName, Object result) {
+        this.test = test;
         this.methodName = methodName;
         this.result = result;
     }
@@ -20,8 +20,8 @@ public class Failure {
         return result == null ? "" : result;
     }
 
-    public Test getTestAnno() {
-        return testAnno;
+    public Test getTest() {
+        return test;
     }
 
     @Override
@@ -37,23 +37,33 @@ public class Failure {
     }
 
     private String getId() {
-        return testAnno.id() == -1 ? "" : "ID: " + testAnno.id() + Constants.BREAKDOWN_DELIM;
+        return test.id() == -1 ?
+                "" :
+                "ID: " + test.id() + Constants.BREAKDOWN_DELIM;
     }
 
     private String getName() {
-        return testAnno.name().equals("") ? "Name: " + methodName + Constants.BREAKDOWN_DELIM : "Name: " + testAnno.name() + Constants.BREAKDOWN_DELIM;
+        return test.name().equals("") ?
+                "Name: " + methodName + Constants.BREAKDOWN_DELIM :
+                "Name: " + test.name() + Constants.BREAKDOWN_DELIM;
     }
 
     private String getInputs() {
-        return testAnno.input().length < 2 ? "" : "Inputs: " + Util.listToStr(testAnno.input()) + Constants.BREAKDOWN_DELIM;
+        return test.input().length < 2 ?
+                "" :
+                "Inputs: " + Util.listToStr(test.input()) + Constants.BREAKDOWN_DELIM;
     }
 
     private String getExpected() {
-        return testAnno.expected().equals("") ? "" : "Expected: " + testAnno.expected() + Constants.BREAKDOWN_DELIM;
+        return test.expected().equals("") ?
+                "" :
+                "Expected: " + test.expected() + Constants.BREAKDOWN_DELIM;
     }
 
     private String getActual() {
-        return getResult().equals("") ? "" : "Actual: " + result;
+        return getResult().equals("") ?
+                "" :
+                "Actual: " + result;
     }
 
 }

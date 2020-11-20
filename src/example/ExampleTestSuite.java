@@ -9,7 +9,7 @@ public class ExampleTestSuite implements TestSuite {
     private ExampleMaths maths;
 
     @Override
-    public void initSetup() {
+    public void beforeAllTests() {
         this.maths = new ExampleMaths();
     }
 
@@ -83,7 +83,7 @@ public class ExampleTestSuite implements TestSuite {
     }
 
     @Override
-    public void initTeardown() {
+    public void afterAllTests() {
         this.maths = null;
     }
 }

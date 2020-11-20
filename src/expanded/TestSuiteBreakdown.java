@@ -9,6 +9,8 @@ public class TestSuiteBreakdown {
 
     static final String HEADER_CHAR = "=";
 
+    static final int INDENTATION = 2;
+
     static final String SECTION_DIVIDER = "\n\n";
 
     static final int REPEATS = 0;
@@ -32,11 +34,12 @@ public class TestSuiteBreakdown {
 
     public String getBreakdownAsString() {
         return getHeader() +
-                SECTION_DIVIDER +
+                "\n" +
+                getMetricsHeader() +
                 getMetrics() +
-                SECTION_DIVIDER +
+                "\n" +
                 getFailedTests() +
-                SECTION_DIVIDER +
+                "\n" +
                 getFooter();
     }
 
@@ -51,22 +54,19 @@ public class TestSuiteBreakdown {
     }
 
     private String getHeader() {
-        return HEADER_CHAR.repeat(REPEATS) +
-                "Test Breakdown for " +
-                suite.getClass().getSimpleName() +
-                " " +
-                HEADER_CHAR.repeat(REPEATS);
+        return suite.getClass().getSimpleName() + ":";
     }
 
     private String getMetrics() {
-        return getMetricsHeader() +
-                "\n\n" +
-                getTestsPassed() +
+        return indent(2) + getTestsPassed() +
                 "\n" +
+                indent(2) +
                 getTestsFailed() +
                 "\n" +
+                indent(2) +
                 getTestsTotal() +
                 "\n" +
+                indent(2) +
                 getPercentageOfTestsPassed();
     }
 
@@ -79,7 +79,7 @@ public class TestSuiteBreakdown {
     }
 
     private String getMetricsHeader() {
-        return "Metrics:";
+        return indent(1) + "Metrics:\n";
     }
 
     private String getTestsPassed() {
@@ -99,18 +99,21 @@ public class TestSuiteBreakdown {
     }
 
     private String getFailHeader() {
-        return "Failed Tests for " +
-                suite.getClass().getSimpleName() +
-                ":\n\n" +
+        return indent(1) + "Failed Tests" +
+                ":\n" +
                 Constants.colour(Constants.TEST_FAILED_COLOUR);
     }
 
     private String buildFailContent() {
         return failed.stream()
-                .sorted(Comparator.comparingInt(f -> f.getTestAnno().id()))
-                .map(Failure::toString)
+                .sorted(Comparator.comparingInt(f -> f.getTest().id()))
+                .map(f -> indent(2) + f.toString())
                 .collect(Collectors.joining("\n"))
                 + Constants.colour(Constants.colour(Constants.RESET_COLOUR));
+    }
+
+    private String indent(int times) {
+        return " ".repeat(times * INDENTATION);
     }
 
 }

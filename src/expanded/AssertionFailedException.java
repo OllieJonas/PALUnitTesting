@@ -1,5 +1,8 @@
 package expanded;
 
+/**
+ * This exception should be thrown whenever a test fails.
+ */
 public class AssertionFailedException extends RuntimeException {
 
     private final Object expected;

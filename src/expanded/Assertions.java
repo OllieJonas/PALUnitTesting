@@ -1,6 +1,13 @@
 package expanded;
 
 public class Assertions {
+
+    /**
+     * Don't want people using the constructor since it's a static utility class.
+     */
+    private Assertions() {
+
+    }
     public static void assertEqual(Object actual, Object expected) {
         if (!actual.equals(expected))
             throw new AssertionFailedException(expected, actual);
