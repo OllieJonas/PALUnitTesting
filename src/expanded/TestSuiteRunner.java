@@ -33,35 +33,31 @@ public class TestSuiteRunner {
     private void runTests() {
         targetMethods.forEach(method -> {
             suite.beforeEachTest();
-            runTest(method);
+
+            Test annotation = method.getAnnotation(Test.class);
+            String methodName = method.getName();
+            TestRunner runner = new TestRunner(suite, method);
+
+            logTestRunning(annotation, methodName);
+
+            TestRunner.TestStatus status = runner.run();
+
+            reportTest(annotation, methodName, status);
+
             suite.afterEachTest();
         });
     }
 
-    /** Assumes we've already filtered the list of declared methods for the annotation {@link Test} */
-    private void runTest(Method method) {
-        Test annotation = method.getAnnotation(Test.class);
-
-        logTestRunning(annotation, method.getName());
-
-        try {
-            invoke(method);
+    private void reportTest(Test annotation, String methodName, TestRunner.TestStatus status) {
+        if (status.didPass())
             passTest();
-        } catch (InvocationTargetException e) { // thrown if the method invoked throws an exception itself
-            failTest(annotation, method.getName(), e.getTargetException());
-        } catch (IllegalAccessException ignored) {
-
-        }
+        else
+            failTest(annotation, methodName, status.getThrown());
     }
 
     private void logTestRunning(Test annotation, String methodName) {
         if (Constants.LOG_INDIVIDUAL_TESTS)
             System.out.printf(Constants.TEST_RUNNING, getName(annotation, methodName), Util.listToStr(annotation.input()), annotation.expected());
-    }
-
-    private void invoke(Method method) throws IllegalAccessException, InvocationTargetException {
-        method.setAccessible(true);
-        method.invoke(suite);
     }
 
     private void passTest() {
@@ -79,11 +75,20 @@ public class TestSuiteRunner {
     }
 
     private void handleFailedTest(Test annotation, String methodName, Throwable target) {
+        if (target instanceof InvocationTargetException)
+            handleInvocationException(annotation, methodName, ((InvocationTargetException) target).getTargetException());
+        else
+            target.printStackTrace();
+    }
+
+    private void handleInvocationException(Test annotation, String methodName, Throwable target) {
         if (target instanceof AssertionFailedException) // if its thrown deliberately
             registerFailedTest(annotation, methodName, ((AssertionFailedException) target).getActual());
         else  // it was a mistake :/
             target.printStackTrace();
     }
+
+
 
     private void registerFailedTest(Test annotation, String methodName, Object result) {
         breakdown.failTest(new Failure(annotation, methodName, result));
