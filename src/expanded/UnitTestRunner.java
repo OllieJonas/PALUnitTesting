@@ -35,16 +35,13 @@ public class UnitTestRunner {
         private final PassFail passFail;
 
         public static TestStatus passed() {
-            return new TestStatus();
+            return new TestStatus(PassFail.PASSED, null);
         }
 
         public static TestStatus failed(Exception thrown) {
             return new TestStatus(PassFail.FAILED, thrown);
         }
 
-        private TestStatus() {
-            this(PassFail.PASSED, null);
-        }
         private TestStatus(PassFail passFail, Exception thrown) {
             this.passFail = passFail;
             this.thrown = thrown;
