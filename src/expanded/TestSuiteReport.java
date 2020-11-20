@@ -7,13 +7,10 @@ import java.util.stream.Collectors;
 
 public class TestSuiteReport {
 
-    static final String HEADER_CHAR = "=";
+    static final int REPEATS = 2;
 
-    static final int INDENTATION = 2;
+    static final String SECTION_DIVIDER = "\n";
 
-    static final String SECTION_DIVIDER = "\n\n";
-
-    static final int REPEATS = 0;
 
     private final TestSuite suite;
 
@@ -34,13 +31,10 @@ public class TestSuiteReport {
 
     public String getBreakdownAsString() {
         return getHeader() +
-                "\n" +
-                getMetricsHeader() +
+                SECTION_DIVIDER +
                 getMetrics() +
-                "\n" +
-                getFailedTests() +
-                "\n" +
-                getFooter();
+                SECTION_DIVIDER +
+                getFailedTests();
     }
 
     public void passTest() {
@@ -58,29 +52,41 @@ public class TestSuiteReport {
     }
 
     private String getMetrics() {
+        return getMetricsHeader() + getMetricsContent();
+    }
+
+    private String getMetricsHeader() {
+        return indent(1) + "Metrics:\n";
+    }
+
+    private String getMetricsContent() {
         return indent(2) + getTestsPassed() +
                 "\n" +
-                indent(2) +
-                getTestsFailed() +
+                indent(2) + getTestsFailed() +
                 "\n" +
-                indent(2) +
-                getTestsTotal() +
+                indent(2) + getTestsTotal() +
                 "\n" +
-                indent(2) +
-                getPercentageOfTestsPassed();
+                indent(2) + getPercentageOfTestsPassed();
     }
 
     private String getFailedTests() {
         return getFailHeader() + buildFailContent();
     }
 
-    private String getFooter() {
-        return HEADER_CHAR.repeat(REPEATS * 4);
+    private String getFailHeader() {
+        return indent(1) + "Failed Tests" +
+                ":\n" +
+                Constants.colour(Constants.TEST_FAILED_COLOUR);
     }
 
-    private String getMetricsHeader() {
-        return indent(1) + "Metrics:\n";
+    private String buildFailContent() {
+        return failed.stream()
+                .sorted(Comparator.comparingInt(f -> f.getTest().id()))
+                .map(f -> indent(2) + f.toString())
+                .collect(Collectors.joining("\n"))
+                + Constants.colour(Constants.colour(Constants.RESET_COLOUR));
     }
+
 
     private String getTestsPassed() {
         return "Tests Passed: " + (noTests - testsFailed);
@@ -98,22 +104,8 @@ public class TestSuiteReport {
         return "Percentage Passed: " + Math.round(((float) (noTests - testsFailed) / (float) noTests) * 100) + " %";
     }
 
-    private String getFailHeader() {
-        return indent(1) + "Failed Tests" +
-                ":\n" +
-                Constants.colour(Constants.TEST_FAILED_COLOUR);
-    }
-
-    private String buildFailContent() {
-        return failed.stream()
-                .sorted(Comparator.comparingInt(f -> f.getTest().id()))
-                .map(f -> indent(2) + f.toString())
-                .collect(Collectors.joining("\n"))
-                + Constants.colour(Constants.colour(Constants.RESET_COLOUR));
-    }
-
     private String indent(int times) {
-        return " ".repeat(times * INDENTATION);
+        return " ".repeat(times * REPEATS);
     }
 
 }
