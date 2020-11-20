@@ -17,12 +17,12 @@ public class UnitTestRunner {
         this.method = method;
     }
     /** Assumes we've already filtered the list of declared methods for the annotation {@link Test} */
-    public TestStatus run() {
+    public TestResult run() {
         try {
             invoke(method);
-            return TestStatus.passed();
+            return TestResult.passed();
         } catch (Exception e) {
-            return TestStatus.failed(e);
+            return TestResult.failed(e);
         }
     }
 
@@ -31,22 +31,27 @@ public class UnitTestRunner {
         method.invoke(suite);
     }
 
-    public static class TestStatus {
+    public static class TestResult {
 
         private final Exception thrown;
 
-        private final PassFail passFail;
+        private final Status status;
 
-        public static TestStatus passed() {
-            return new TestStatus(PassFail.PASSED, null);
+        public static TestResult passed() {
+            return new TestResult(Status.PASSED, null);
         }
 
-        public static TestStatus failed(Exception thrown) {
-            return new TestStatus(PassFail.FAILED, thrown);
+        public static TestResult failed(Exception thrown) {
+            return new TestResult(Status.FAILED, thrown);
         }
 
-        private TestStatus(PassFail passFail, Exception thrown) {
-            this.passFail = passFail;
+        /**
+         * Private constructor here to enforce the static factory constructors (see
+         * {@link TestResult#passed()} and {@link TestResult#failed(Exception)}) user can't make any weird combinations
+         * (eg. Test passed but also threw an exception)
+         */
+        private TestResult(Status status, Exception thrown) {
+            this.status = status;
             this.thrown = thrown;
         }
 
@@ -55,10 +60,10 @@ public class UnitTestRunner {
         }
 
         public boolean didPass() {
-            return passFail == PassFail.PASSED;
+            return status == Status.PASSED;
         }
 
-        enum PassFail {
+        private enum Status {
             PASSED,
             FAILED;
         }

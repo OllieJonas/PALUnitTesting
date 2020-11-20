@@ -52,7 +52,7 @@ public class TestSuiteRunner {
 
     private void runTest(Test annotation, String methodName, UnitTestRunner runner) {
         logTestRunning(annotation, methodName);
-        UnitTestRunner.TestStatus status = runner.run();
+        UnitTestRunner.TestResult status = runner.run();
         reporter.report(annotation, methodName, status);
     }
 

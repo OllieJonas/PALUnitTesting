@@ -17,7 +17,7 @@ public class TestSuiteReporter {
         this.report = new TestSuiteReport(suite);
     }
 
-    public void report(Test annotation, String methodName, UnitTestRunner.TestStatus status) {
+    public void report(Test annotation, String methodName, UnitTestRunner.TestResult status) {
         if (status.didPass())
             passTest();
         else
