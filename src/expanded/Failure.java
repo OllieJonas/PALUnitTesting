@@ -4,8 +4,6 @@ import expanded.tests.Test;
 
 public class Failure {
 
-    static final String STARTING = "==> ";
-
     private final Test test;
 
     private final String methodName;
@@ -28,7 +26,7 @@ public class Failure {
 
     @Override
     public String toString() {
-        return STARTING +
+        return Constants.FAILURE_START_STR +
                 Constants.BREAKDOWN_DELIM +
                 getId() +
                 getName() +
@@ -45,9 +43,7 @@ public class Failure {
     }
 
     private String getName() {
-        return test.name().equals("") ?
-                "Name: " + methodName + Constants.BREAKDOWN_DELIM :
-                "Name: " + test.name() + Constants.BREAKDOWN_DELIM;
+        return "Name: " + (test.name().equals("") ? methodName : test.name()) + Constants.BREAKDOWN_DELIM;
     }
 
     private String getInputs() {

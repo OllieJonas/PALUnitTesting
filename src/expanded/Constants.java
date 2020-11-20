@@ -2,6 +2,8 @@ package expanded;
 
 public class Constants {
 
+    public static final String FAILURE_START_STR = "==> ";
+
     public static final boolean LOG_INDIVIDUAL_TESTS = true;
 
     public static final boolean USING_COLOURS = true;
