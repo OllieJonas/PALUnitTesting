@@ -5,7 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class TestSuiteBreakdown {
+public class TestSuiteReport {
 
     static final String HEADER_CHAR = "=";
 
@@ -23,7 +23,7 @@ public class TestSuiteBreakdown {
 
     private int noTests;
 
-    public TestSuiteBreakdown(TestSuite suite) {
+    public TestSuiteReport(TestSuite suite) {
         this.suite = suite;
         this.failed = new ArrayList<>();
     }

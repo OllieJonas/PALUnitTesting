@@ -58,7 +58,7 @@ public class TestSuiteRunner {
         return annotation.name().equals("") ? methodName : annotation.name();
     }
 
-    public TestSuiteBreakdown getBreakdown() {
-        return reporter.getBreakdown();
+    public TestSuiteReport getReport() {
+        return reporter.getReport();
     }
 }

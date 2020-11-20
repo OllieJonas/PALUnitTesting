@@ -4,16 +4,16 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.stream.Collectors;
 
-public class UnitTestsBreakdown {
+public class Report {
 
-    private final Map<String, TestSuiteBreakdown> breakdowns;
+    private final Map<String, TestSuiteReport> reports;
 
-    public UnitTestsBreakdown() {
-        this.breakdowns = new HashMap<>();
+    public Report() {
+        this.reports = new HashMap<>();
     }
 
-    public void addBreakdown(String suiteName, TestSuiteBreakdown breakdown) {
-        breakdowns.put(suiteName, breakdown);
+    public void addBreakdown(String suiteName, TestSuiteReport breakdown) {
+        reports.put(suiteName, breakdown);
     }
 
     public void print() {
@@ -30,12 +30,12 @@ public class UnitTestsBreakdown {
     }
 
     private String getContent() {
-        return breakdowns.values().stream()
-                .map(TestSuiteBreakdown::getBreakdownAsString)
+        return reports.values().stream()
+                .map(TestSuiteReport::getBreakdownAsString)
                 .collect(Collectors.joining("\n"));
     }
 
     private String getHeader() {
-        return "UNIT TEST BREAKDOWN";
+        return "UNIT TESTS REPORTS";
     }
 }

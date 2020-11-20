@@ -4,10 +4,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public class TestSuiteReporter {
 
-    private final TestSuiteBreakdown breakdown;
+    private final TestSuiteReport report;
 
     public TestSuiteReporter(TestSuite suite) {
-        this.breakdown = new TestSuiteBreakdown(suite);
+        this.report = new TestSuiteReport(suite);
     }
 
     public void report(Test annotation, String methodName, UnitTestRunner.TestStatus status) {
@@ -21,7 +21,7 @@ public class TestSuiteReporter {
         if (Constants.LOG_INDIVIDUAL_TESTS)
             System.out.println(Constants.TEST_PASSED);
 
-        breakdown.passTest();
+        report.passTest();
     }
 
     private void failTest(Test annotation, String methodName, Exception target) {
@@ -46,10 +46,10 @@ public class TestSuiteReporter {
     }
 
     private void registerFailedTest(Test annotation, String methodName, Object result) {
-        breakdown.failTest(new Failure(annotation, methodName, result));
+        report.failTest(new Failure(annotation, methodName, result));
     }
 
-    public TestSuiteBreakdown getBreakdown() {
-        return breakdown;
+    public TestSuiteReport getReport() {
+        return report;
     }
 }
