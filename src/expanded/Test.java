@@ -8,11 +8,11 @@ import java.lang.annotation.Target;
 @Retention(RetentionPolicy.RUNTIME)
 @Target(ElementType.METHOD)
 public @interface Test {
-    int id();
+    int id() default -1;
 
-    String name() default "N/A";
+    String name() default "";
 
-    String[] input() default "N/A";
+    String[] input() default "";
 
-    String expected() default "N/A";
+    String expected() default "";
 }

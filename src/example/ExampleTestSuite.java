@@ -13,6 +13,12 @@ public class ExampleTestSuite implements TestSuite {
         this.maths = new ExampleMaths();
     }
 
+    @Test
+    public void testAdd_NoAnnoParams() {
+        int result = maths.add(3, 6);
+        Assertions.assertEqual(result, 8);
+    }
+
     @Test(
             id = 1,
             name = "Addition Test (Correct)",

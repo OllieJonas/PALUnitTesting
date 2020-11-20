@@ -107,18 +107,10 @@ public class TestSuiteBreakdown {
 
     private String buildFailContent() {
         return failed.stream()
-                .sorted(Comparator.comparingInt(f -> f.getTest().id()))
-                .map(this::buildFailMessage)
+                .sorted(Comparator.comparingInt(f -> f.getTestAnno().id()))
+                .map(Failure::toString)
                 .collect(Collectors.joining("\n"))
                 + Constants.colour(Constants.colour(Constants.RESET_COLOUR));
-    }
-
-    private String buildFailMessage(Failure fail) {
-        return "ID: " + fail.getTest().id() + Constants.BREAKDOWN_DELIM +
-                "Name: " + fail.getTest().name() + Constants.BREAKDOWN_DELIM +
-                "Inputs: " + Util.listToStr(fail.getTest().input()) + Constants.BREAKDOWN_DELIM +
-                "Expected: " + fail.getTest().expected() + Constants.BREAKDOWN_DELIM +
-                "Actual: " + fail.getResult().toString();
     }
 
 }

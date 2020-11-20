@@ -44,7 +44,7 @@ public class TestRunner {
             invoke(method);
             passTest();
         } catch (InvocationTargetException e) { // thrown if the method invoked throws an exception itself
-            failTest(annotation, e.getTargetException());
+            failTest(annotation, method.getName(), e.getTargetException());
         } catch (IllegalAccessException ignored) {
 
         }
@@ -67,22 +67,22 @@ public class TestRunner {
         breakdown.passTest();
     }
 
-    private void failTest(Test annotation, Throwable target) {
+    private void failTest(Test annotation, String methodName, Throwable target) {
         if (Constants.LOG_INDIVIDUAL_TESTS)
             System.out.println(Constants.TEST_FAILED);
 
-        handleFailedTest(annotation, target);
+        handleFailedTest(annotation, methodName, target);
     }
 
-    private void handleFailedTest(Test annotation, Throwable target) {
+    private void handleFailedTest(Test annotation, String methodName, Throwable target) {
         if (target instanceof AssertionFailedException) // if its thrown deliberately
-            registerFailedTest(annotation, ((AssertionFailedException) target).getActual());
+            registerFailedTest(annotation, methodName, ((AssertionFailedException) target).getActual());
         else  // it was a mistake :/
             target.printStackTrace();
     }
 
-    private void registerFailedTest(Test annotation, Object result) {
-        breakdown.failTest(new Failure(annotation, result));
+    private void registerFailedTest(Test annotation, String methodName, Object result) {
+        breakdown.failTest(new Failure(annotation, methodName, result));
     }
 
     public TestSuiteBreakdown getBreakdown() {
