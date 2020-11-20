@@ -2,7 +2,6 @@ package expanded;
 
 public class Constants {
 
-    public static final String FAILURE_START_STR = "==> ";
 
     public static final boolean LOG_INDIVIDUAL_TESTS = true;
 
@@ -20,7 +19,9 @@ public class Constants {
 
     public static final String TEST_RUNNING = "Running test \"%s\"... Inputs: %s, Expected: %s\n";
 
-    public static final String BREAKDOWN_DELIM = " | ";
+    public static final String FAILURE_DELIM = " | ";
+
+    public static final String FAILURE_START_STR = " ==> " + FAILURE_DELIM;
 
     public static final int REPORT_REPEATS = 2;
 

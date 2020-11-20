@@ -37,29 +37,29 @@ public class Failure {
     private String getId() {
         return test.id() == -1 ?
                 "" :
-                "ID: " + test.id() + Constants.BREAKDOWN_DELIM;
+                "ID: " + test.id() + Constants.FAILURE_DELIM;
     }
 
     private String getName() {
-        return "Name: " + (test.name().equals("") ? methodName : test.name()) + Constants.BREAKDOWN_DELIM;
+        return "Name: " + (test.name().equals("") ? methodName : test.name()) + Constants.FAILURE_DELIM;
     }
 
     private String getInputs() {
         return test.input().length < 2 ?
                 "" :
-                "Inputs: " + Util.listToStr(test.input()) + Constants.BREAKDOWN_DELIM;
+                "Inputs: " + Util.listToStr(test.input()) + Constants.FAILURE_DELIM;
     }
 
     private String getExpected() {
         return test.expected().equals("") ?
                 "" :
-                "Expected: " + test.expected() + Constants.BREAKDOWN_DELIM;
+                "Expected: " + test.expected() + Constants.FAILURE_DELIM;
     }
 
     private String getActual() {
         return getResult().equals("") ?
                 "" :
-                "Actual: " + result + Constants.BREAKDOWN_DELIM;
+                "Actual: " + result + Constants.FAILURE_DELIM;
     }
 
 }
