@@ -1,4 +1,4 @@
-package expanded;
+package expanded.report;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,5 +1,7 @@
 package expanded;
 
+import expanded.tests.Test;
+
 public class Failure {
 
     static final String STARTING = "==> ";

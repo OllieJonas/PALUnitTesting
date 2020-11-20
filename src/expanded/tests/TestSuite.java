@@ -1,4 +1,4 @@
-package expanded;
+package expanded.tests;
 
 public interface TestSuite {
 

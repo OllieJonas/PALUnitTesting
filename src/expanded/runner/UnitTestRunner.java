@@ -1,4 +1,7 @@
-package expanded;
+package expanded.runner;
+
+import expanded.tests.Test;
+import expanded.tests.TestSuite;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

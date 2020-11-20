@@ -1,4 +1,4 @@
-package expanded;
+package expanded.exceptions;
 
 /**
  * This exception should be thrown whenever a test fails.
