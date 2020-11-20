@@ -30,7 +30,9 @@ public class UnitTestsBreakdown {
     }
 
     private String getContent() {
-        return breakdowns.values().stream().map(TestSuiteBreakdown::getBreakdownAsString).collect(Collectors.joining("\n"));
+        return breakdowns.values().stream()
+                .map(TestSuiteBreakdown::getBreakdownAsString)
+                .collect(Collectors.joining("\n"));
     }
 
     private String getHeader() {
