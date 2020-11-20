@@ -1,7 +1,5 @@
 package expanded;
 
-import expanded.exceptions.AssertionFailedException;
-
 public class Assertions {
 
     /**

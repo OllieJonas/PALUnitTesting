@@ -1,7 +1,7 @@
 package expanded.report;
 
 import expanded.*;
-import expanded.exceptions.AssertionFailedException;
+import expanded.AssertionFailedException;
 import expanded.Constants;
 import expanded.runner.UnitTestRunner;
 import expanded.tests.Test;
