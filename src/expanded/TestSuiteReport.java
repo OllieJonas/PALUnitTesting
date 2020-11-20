@@ -7,11 +7,6 @@ import java.util.stream.Collectors;
 
 public class TestSuiteReport {
 
-    static final int REPEATS = 2;
-
-    static final String SECTION_DIVIDER = "\n";
-
-
     private final TestSuite suite;
 
     private final List<Failure> failed;
@@ -31,9 +26,9 @@ public class TestSuiteReport {
 
     public String getBreakdownAsString() {
         return getHeader() +
-                SECTION_DIVIDER +
+                Constants.REPORT_SECTION_DIVIDER +
                 getMetrics() +
-                SECTION_DIVIDER +
+                Constants.REPORT_SECTION_DIVIDER +
                 getFailedTests();
     }
 
@@ -105,7 +100,7 @@ public class TestSuiteReport {
     }
 
     private String indent(int times) {
-        return " ".repeat(times * REPEATS);
+        return " ".repeat(times * Constants.REPORT_REPEATS);
     }
 
 }

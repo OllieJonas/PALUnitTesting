@@ -20,6 +20,10 @@ public class Constants {
 
     static final String BREAKDOWN_DELIM = " | ";
 
+    static final int REPORT_REPEATS = 2;
+
+    static final String REPORT_SECTION_DIVIDER = "\n";
+
     public static String colour(String colour) {
         return USING_COLOURS ? colour : "";
     }
