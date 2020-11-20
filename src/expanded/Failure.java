@@ -27,13 +27,11 @@ public class Failure {
     @Override
     public String toString() {
         return Constants.FAILURE_START_STR +
-                Constants.BREAKDOWN_DELIM +
                 getId() +
                 getName() +
                 getInputs() +
                 getExpected() +
-                getActual() +
-                Constants.BREAKDOWN_DELIM;
+                getActual();
     }
 
     private String getId() {
@@ -61,7 +59,7 @@ public class Failure {
     private String getActual() {
         return getResult().equals("") ?
                 "" :
-                "Actual: " + result;
+                "Actual: " + result + Constants.BREAKDOWN_DELIM;
     }
 
 }
