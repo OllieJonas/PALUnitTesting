@@ -3,11 +3,11 @@ package expanded;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
-public class TestRunner {
+public class UnitTestRunner {
 
     public static class TestStatus {
 
-        private final Throwable thrown;
+        private final Exception thrown;
 
         private final PassFail passFail;
 
@@ -15,19 +15,19 @@ public class TestRunner {
             return new TestStatus();
         }
 
-        public static TestStatus failed(Throwable thrown) {
+        public static TestStatus failed(Exception thrown) {
             return new TestStatus(PassFail.FAILED, thrown);
         }
 
         private TestStatus() {
             this(PassFail.PASSED, null);
         }
-        private TestStatus(PassFail passFail, Throwable thrown) {
+        private TestStatus(PassFail passFail, Exception thrown) {
             this.passFail = passFail;
             this.thrown = thrown;
         }
 
-        public Throwable getThrown() {
+        public Exception getThrown() {
             return thrown;
         }
 
@@ -45,7 +45,7 @@ public class TestRunner {
 
     private final Method method;
 
-    public TestRunner(TestSuite suite, Method method) {
+    public UnitTestRunner(TestSuite suite, Method method) {
         this.suite = suite;
         this.method = method;
     }
