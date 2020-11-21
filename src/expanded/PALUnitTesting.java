@@ -77,7 +77,7 @@ public class PALUnitTesting {
             runner.run();
             s.afterAllTests();
 
-            report.addTestSuiteReport(s.getClass().getSimpleName(), runner.getReport());
+            report.addTestSuiteReport(s.name(), runner.getReport());
         });
         report.print();
     }
