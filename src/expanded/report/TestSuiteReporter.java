@@ -4,8 +4,8 @@ import expanded.*;
 import expanded.AssertionFailedException;
 import expanded.Constants;
 import expanded.runner.UnitTestRunner;
-import expanded.tests.Test;
-import expanded.tests.TestSuite;
+import expanded.testmeta.Test;
+import expanded.testmeta.TestSuite;
 
 import java.lang.reflect.InvocationTargetException;
 
@@ -13,15 +13,15 @@ public class TestSuiteReporter {
 
     private final TestSuiteReport report;
 
-    public TestSuiteReporter(TestSuite suite) {
-        this.report = new TestSuiteReport(suite);
+    public TestSuiteReporter() {
+        this.report = new TestSuiteReport();
     }
 
-    public void report(Test annotation, String methodName, UnitTestRunner.TestResult status) {
-        if (status.didPass())
+    public void report(Test annotation, String invokedMethodName, UnitTestRunner.TestResult result) {
+        if (result.didPass())
             passTest();
         else
-            failTest(annotation, methodName, status.getThrown());
+            failTest(annotation, invokedMethodName, result.getThrown());
     }
 
     private void passTest() {

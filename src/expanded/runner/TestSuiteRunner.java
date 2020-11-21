@@ -4,8 +4,8 @@ import expanded.Constants;
 import expanded.Util;
 import expanded.report.TestSuiteReport;
 import expanded.report.TestSuiteReporter;
-import expanded.tests.Test;
-import expanded.tests.TestSuite;
+import expanded.testmeta.Test;
+import expanded.testmeta.TestSuite;
 
 import java.lang.reflect.Method;
 import java.util.List;
@@ -22,7 +22,7 @@ public class TestSuiteRunner {
 
     public TestSuiteRunner(TestSuite suite) {
         this.suite = suite;
-        this.reporter = new TestSuiteReporter(suite);
+        this.reporter = new TestSuiteReporter();
     }
 
     public void run() {

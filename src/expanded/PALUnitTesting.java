@@ -3,7 +3,7 @@ package expanded;
 import expanded.report.Report;
 import expanded.report.TestSuiteReport;
 import expanded.runner.TestSuiteRunner;
-import expanded.tests.TestSuite;
+import expanded.testmeta.TestSuite;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +25,7 @@ public class PALUnitTesting {
     }
 
     public void runTests() {
-        Report breakdown = new Report();
+        Report report = new Report();
         testSuites.forEach(s -> {
             TestSuiteRunner runner = new TestSuiteRunner(s);
 
@@ -33,9 +33,9 @@ public class PALUnitTesting {
             runner.run();
             s.afterAllTests();
 
-            breakdown.addBreakdown(s.getClass().getSimpleName(), runner.getReport());
+            report.addTestSuiteReport(s.getClass().getSimpleName(), runner.getReport());
         });
-        breakdown.print();
+        report.print();
     }
 
     private void printBreakdown(TestSuiteReport breakdown) {

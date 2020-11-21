@@ -1,6 +1,6 @@
 package expanded;
 
-import expanded.tests.Test;
+import expanded.testmeta.Test;
 
 public class Failure {
 

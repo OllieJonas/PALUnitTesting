@@ -2,7 +2,7 @@ package expanded.report;
 
 import expanded.Constants;
 import expanded.Failure;
-import expanded.tests.TestSuite;
+import expanded.testmeta.TestSuite;
 
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -11,27 +11,22 @@ import java.util.stream.Collectors;
 
 public class TestSuiteReport {
 
-    private final TestSuite suite;
-
     private final List<Failure> failed;
 
     private int testsFailed;
 
     private int noTests;
 
-    public TestSuiteReport(TestSuite suite) {
-        this.suite = suite;
+    public TestSuiteReport() {
         this.failed = new ArrayList<>();
     }
 
     public void print() {
-        System.out.println(getBreakdownAsString());
+        System.out.println(getReportAsString());
     }
 
-    public String getBreakdownAsString() {
-        return getHeader() +
-                Constants.REPORT_SECTION_DIVIDER +
-                getMetrics() +
+    public String getReportAsString() {
+        return getMetrics() +
                 Constants.REPORT_SECTION_DIVIDER +
                 getFailedTests();
     }
@@ -44,10 +39,6 @@ public class TestSuiteReport {
         failed.add(failure);
         noTests++;
         testsFailed++;
-    }
-
-    private String getHeader() {
-        return suite.getClass().getSimpleName() + ":";
     }
 
     private String getMetrics() {

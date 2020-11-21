@@ -1,4 +1,4 @@
-package expanded.tests;
+package expanded.testmeta;
 
 public interface TestSuite {
 

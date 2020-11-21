@@ -1,8 +1,8 @@
 package example;
 
 import expanded.Assertions;
-import expanded.tests.Test;
-import expanded.tests.TestSuite;
+import expanded.testmeta.Test;
+import expanded.testmeta.TestSuite;
 
 public class ExampleTestSuite implements TestSuite {
 

@@ -12,16 +12,16 @@ public class Report {
         this.reports = new HashMap<>();
     }
 
-    public void addBreakdown(String suiteName, TestSuiteReport breakdown) {
+    public void addTestSuiteReport(String suiteName, TestSuiteReport breakdown) {
         reports.put(suiteName, breakdown);
     }
 
     public void print() {
         System.out.println();
-        System.out.println(getBreakdown());
+        System.out.println(getReport());
     }
 
-    public String getBreakdown() {
+    public String getReport() {
         return getHeader() + "\n\n" + getContent() + "\n" + getFooter();
     }
 
@@ -30,8 +30,8 @@ public class Report {
     }
 
     private String getContent() {
-        return reports.values().stream()
-                .map(TestSuiteReport::getBreakdownAsString)
+        return reports.entrySet().stream()
+                .map((entry) -> entry.getKey() + "\n" + entry.getValue().getReportAsString())
                 .collect(Collectors.joining("\n"));
     }
 

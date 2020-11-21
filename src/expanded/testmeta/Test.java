@@ -1,4 +1,4 @@
-package expanded.tests;
+package expanded.testmeta;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
