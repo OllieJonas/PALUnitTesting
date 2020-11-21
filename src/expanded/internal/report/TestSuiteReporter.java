@@ -1,11 +1,10 @@
-package expanded.report;
+package expanded.internal.report;
 
-import expanded.*;
 import expanded.AssertionFailedException;
 import expanded.Constants;
-import expanded.runner.UnitTestRunner;
+import expanded.internal.Failure;
+import expanded.internal.runner.UnitTestRunner;
 import expanded.testmeta.Test;
-import expanded.testmeta.TestSuite;
 
 import java.lang.reflect.InvocationTargetException;
 

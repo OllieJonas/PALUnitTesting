@@ -1,5 +1,6 @@
-package expanded;
+package expanded.internal;
 
+import expanded.Constants;
 import expanded.testmeta.Test;
 
 public class Failure {

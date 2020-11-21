@@ -1,8 +1,7 @@
-package expanded.report;
+package expanded.internal.report;
 
 import expanded.Constants;
-import expanded.Failure;
-import expanded.testmeta.TestSuite;
+import expanded.internal.Failure;
 
 import java.util.ArrayList;
 import java.util.Comparator;

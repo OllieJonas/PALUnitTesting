@@ -1,8 +1,8 @@
 package expanded;
 
-import expanded.report.Report;
-import expanded.report.TestSuiteReport;
-import expanded.runner.TestSuiteRunner;
+import expanded.internal.report.Report;
+import expanded.internal.report.TestSuiteReport;
+import expanded.internal.runner.TestSuiteRunner;
 import expanded.testmeta.TestSuite;
 
 import java.util.ArrayList;
@@ -36,10 +36,5 @@ public class PALUnitTesting {
             report.addTestSuiteReport(s.getClass().getSimpleName(), runner.getReport());
         });
         report.print();
-    }
-
-    private void printBreakdown(TestSuiteReport breakdown) {
-        System.out.println();
-        breakdown.print();
     }
 }

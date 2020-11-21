@@ -1,4 +1,4 @@
-package expanded.runner;
+package expanded.internal.runner;
 
 import expanded.testmeta.Test;
 import expanded.testmeta.TestSuite;

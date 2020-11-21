@@ -1,9 +1,9 @@
-package expanded.runner;
+package expanded.internal.runner;
 
 import expanded.Constants;
-import expanded.Util;
-import expanded.report.TestSuiteReport;
-import expanded.report.TestSuiteReporter;
+import expanded.internal.Util;
+import expanded.internal.report.TestSuiteReport;
+import expanded.internal.report.TestSuiteReporter;
 import expanded.testmeta.Test;
 import expanded.testmeta.TestSuite;
 

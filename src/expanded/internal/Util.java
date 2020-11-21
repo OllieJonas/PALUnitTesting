@@ -1,4 +1,4 @@
-package expanded;
+package expanded.internal;
 
 public class Util {
 
