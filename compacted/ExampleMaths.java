@@ -1,5 +1,3 @@
-package example;
-
 public class ExampleMaths {
 
     public int add(int x, int y) {
@@ -15,6 +13,6 @@ public class ExampleMaths {
     }
 
     public boolean isBiggerThan(int x, int y) {
-        return x >= y;
+        return x > y;
     }
 }
