@@ -18,4 +18,4 @@ _(This project was also partly created to give me an excuse to dive into how JUn
 
 ## Usage
 
-Examples of usage of this project can be found in the ```compacted/``` directory. There are quite a few common Assertions provided at the top of the class, with their functionality (hopefully) being pretty self-explanatory.
+Examples of usage of this project can be found in the ```compacted/ExampleTestSuite.java``` and ```compacted/ExampleMain.java``` files. There are quite a few common Assertions provided at the top of the class, with their functionality (hopefully) being pretty self-explanatory.
