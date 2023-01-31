@@ -1,3 +1,7 @@
+[![License][license]](LICENSE)
+
+[license]: https://img.shields.io/badge/license-MIT-green
+
 # PALUnitTesting
 
 A lightweight unit testing framework, contained in a single class.
