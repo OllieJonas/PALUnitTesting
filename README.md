@@ -8,10 +8,10 @@ A lightweight unit testing framework, contained in a single class.
 
 ## Awards
 
-[Bath Education Awards 2021](https://www.thesubath.com/academicreps/awards/2021/)
+- Nominated as a group for Peer Support Above and Beyond at the Bath Education Awards 2021
+- Highly commended personally for Peer Champion at the Bath Education Awards 2021
 
-- Nominated as a group for Peer Support Above and Beyond
-- Highly commended personally for Peer Champion 
+[(Bath Education Awards 2021)](https://www.thesubath.com/academicreps/awards/2021/)
 
 ## Motivation
 
