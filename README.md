@@ -6,7 +6,7 @@
 
 A lightweight unit testing framework, contained in a single class.
 
-## Awards
+## Awards (as part of PAL)
 
 - Nominated as a group for Peer Support Above and Beyond at the Bath Education Awards 2021
 - Highly commended personally for Peer Champion at the Bath Education Awards 2021
