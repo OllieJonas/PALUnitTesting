@@ -21,7 +21,7 @@ As part of being a PAL Leader, we found that students benefitted greatly from co
 
 Given we ran our PAL sessions during the COVID-19 pandemic, we found it was easiest to create and share these exercises using [repl.it](https://replit.com/), an online IDE that supports most languages. Most importantly, it provided a niche feature that if you were to edit a project created by someone else, it would automatically create a fork for your account. This meant that it was very easy for students to quickly create their own forks of the exercises. 
 
-However, at the time, replit didn't have easy support for automated test units, or the use of libraries such as JUnit. Therefore, I opted to create a lightweight version of a testing framework (contained in a single class file that could be easily copy and pasted into exercises).
+However, at the time, replit didn't have easy support for automated test units, or the use of libraries such as JUnit, meaning students weren't able to get immediate feedback on the exercises. Therefore, I opted to create a lightweight version of a testing framework (contained in a single class file that could be easily copy and pasted into exercises).
 
 This allowed PAL Leaders to create automated test units for students, giving them instant feedback on how they're getting on with the exercise remotely. The syntax is also heavily based on JUnits, meaning that it was a small learning curve for PAL Leaders to use this framework. 
 
