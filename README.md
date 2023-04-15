@@ -19,7 +19,7 @@ This project was created for Peer Assisted Learning [(PAL)](https://www.thesubat
 
 As part of being a PAL Leader, we found that students benefitted greatly from coding exercises based on content that was covered that week (especially for Java, the primary language being taught in lectures at the time).
 
-Given we ran our PAL sessions during the COVID pandemic, we found it was easiest to create and share these exercises using [repl.it](https://replit.com/), an online IDE that supports most languages. Most importantly, it provided a niche feature that if you were to edit a project created by someone else, it would automatically create a fork for your account. This meant that it was very easy for students to quickly create their own forks of the exercises. 
+Given we ran our PAL sessions during the COVID-19 pandemic, we found it was easiest to create and share these exercises using [repl.it](https://replit.com/), an online IDE that supports most languages. Most importantly, it provided a niche feature that if you were to edit a project created by someone else, it would automatically create a fork for your account. This meant that it was very easy for students to quickly create their own forks of the exercises. 
 
 However, at the time, replit didn't have easy support for automated test units, or the use of libraries such as JUnit. Therefore, I opted to create a lightweight version of a testing framework (contained in a single class file that could be easily copy and pasted into exercises).
 
