@@ -11,11 +11,11 @@ A lightweight unit testing framework, contained in a single class.
 - Nominated as a group for Peer Support Above and Beyond at the Bath Education Awards 2021
 - Highly commended personally for Peer Champion at the Bath Education Awards 2021
 
-[(Bath Education Awards 2021)](https://www.thesubath.com/academicreps/awards/2021/)
+([Bath Education Awards 2021](https://www.thesubath.com/academicreps/awards/2021/))
 
 ## Motivation
 
-This project was created for Peer Assisted Learning [(PAL)](https://www.thesubath.com/peer-support/pal/), a programme run by second year students (known as PAL Leaders) for first years (students), designed to help facilitate discussion about the course content, with [light guidance](https://www.essentialgptrainingbook.com/wp-content/online-resources/03%20Peer%20Assisted%20Learning.pdf) from those who have already done the content.
+This project was created for Peer Assisted Learning ([PAL](https://www.thesubath.com/peer-support/pal/)), a programme run by second year students (known as PAL Leaders) for first years (students), designed to help facilitate discussion about the course content, with [light guidance](https://www.essentialgptrainingbook.com/wp-content/online-resources/03%20Peer%20Assisted%20Learning.pdf) from those who have already done the content.
 
 As part of being a PAL Leader, we found that students benefitted greatly from coding exercises based on content that was covered that week (especially for Java, the primary language being taught in lectures at the time).
 
