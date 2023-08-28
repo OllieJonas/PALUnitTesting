@@ -23,7 +23,7 @@ Given we ran our PAL sessions during the COVID-19 pandemic, we found it was easi
 
 However, at the time, replit didn't have easy support for automated test units, or the use of libraries such as JUnit, meaning students weren't able to get immediate feedback on the exercises. Therefore, I opted to create a lightweight version of a testing framework (contained in a single class file that could be easily copy and pasted into exercises).
 
-This allowed PAL Leaders to create automated test units for students, giving them instant feedback on how they're getting on with the exercise remotely. The syntax is also heavily based on JUnits, meaning that it was a small learning curve for PAL Leaders to use this framework. 
+This allowed PAL Leaders to create automated test units for students, giving them instant feedback on how they're getting on with the exercise remotely. The syntax is also heavily based on JUnits, a library that most PAL leaders already had experience with, meaning that it was a small learning curve for them to use this framework. 
 
 _(This project was also partly created to give me an excuse to dive into how JUnit works...)_
 
